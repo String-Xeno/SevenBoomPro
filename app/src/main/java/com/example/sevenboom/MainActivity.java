@@ -25,13 +25,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(counter < 100){
                     counter++;
-                    countTxt.setText("" + counter);
+                    updateCounter(countTxt);
+                    dividesInSevensToast();
+                    hasSevenDigitToast();
                 } else {
                     countLimitToast();
                 }
 
-                dividesInSevensToast();
-                hasSevenDigitToast();
+
 
             }
         });
@@ -41,14 +42,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(counter > -20){
                     counter--;
-                    countTxt.setText("" + counter);
+                    updateCounter(countTxt);
+                    dividesInSevensToast();
+                    hasSevenDigitToast();
                 } else {
                     countLimitToast();
                 }
-
-                dividesInSevensToast();
-                hasSevenDigitToast();
-
             }
         });
 
@@ -56,12 +55,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 counter = 0;
-                countTxt.setText("" + counter);
+                updateCounter(countTxt);
             }
         });
 
 
     }
+    public void updateCounter(TextView countToUpdate){
+        countToUpdate.setText(counter);
+    }
+
 
     public void dividesInSevensToast(){
         if (counter % 7 == 0)
