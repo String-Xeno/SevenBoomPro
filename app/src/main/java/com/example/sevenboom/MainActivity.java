@@ -27,19 +27,12 @@ public class MainActivity extends AppCompatActivity {
                     counter++;
                     countTxt.setText("" + counter);
                 } else {
-                    Toast.makeText(MainActivity.this, "Max count of " + counter + " reached!", Toast.LENGTH_SHORT).show();
-                }
-                if (counter % 7 == 0){
-                    Toast.makeText(MainActivity.this, "BOOM!! THE NUMBER " + counter + " DIVIDES IN SEVENS", Toast.LENGTH_SHORT).show();
+                    countLimitToast();
                 }
 
-                int countercopy = counter;
-                while(countercopy != 0) {
-                    if (countercopy % 10 == 7){
-                        Toast.makeText(MainActivity.this, "The number " + counter + " contains the digit 7.", Toast.LENGTH_SHORT).show();
-                    }
-                    countercopy /= 10;
-                }
+                dividesInSevensToast();
+                hasSevenDigitToast();
+
             }
         });
 
@@ -50,19 +43,12 @@ public class MainActivity extends AppCompatActivity {
                     counter--;
                     countTxt.setText("" + counter);
                 } else {
-                    Toast.makeText(MainActivity.this, "Minimum count of " + counter + " reached!", Toast.LENGTH_SHORT).show();
-                }
-                if (counter % 7 == 0){
-                    Toast.makeText(MainActivity.this, "BOOM!! THE NUMBER " + counter + " DIVIDES IN SEVENS", Toast.LENGTH_SHORT).show();
+                    countLimitToast();
                 }
 
-                int countercopy = counter;
-                while(countercopy != 0) {
-                    if (countercopy % 10 == -7){
-                        Toast.makeText(MainActivity.this, "The number " + counter + " contains the digit 7.", Toast.LENGTH_SHORT).show();
-                    }
-                    countercopy /= 10;
-                }
+                dividesInSevensToast();
+                hasSevenDigitToast();
+
             }
         });
 
@@ -75,5 +61,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void dividesInSevensToast(){
+        if (counter % 7 == 0)
+            Toast.makeText(MainActivity.this, "BOOM!! THE NUMBER " + counter + " DIVIDES IN SEVENS", Toast.LENGTH_SHORT).show();
+    }
+
+    public void hasSevenDigitToast(){
+        int countercopy = counter;
+        while(countercopy != 0) {
+            if (countercopy % 10 == 7 || countercopy % 10 == -7){
+                Toast.makeText(MainActivity.this, "The number " + counter + " contains the digit 7.", Toast.LENGTH_SHORT).show();
+            }
+            countercopy /= 10;
+        }
+    }
+
+    public void countLimitToast(){
+        Toast.makeText(MainActivity.this, "count limit of " + counter + " reached!", Toast.LENGTH_SHORT).show();
     }
 }
